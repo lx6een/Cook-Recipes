@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Продукты — Cook Recipes</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">🍳 Cook <span>Recipes</span></a>
+      <ul class="nav-links">
+        <li><a href="/">Главная</a></li>
+        <li><a href="/foods" class="active">Продукты</a></li>
+        <li><a href="/recipes">Рецепты</a></li>
+        <li><a href="/mealplans">Рацион</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="page-header">
+      <h1>Продукты питания</h1>
+    </div>
+
+    <div id="alerts"></div>
+
+    <section class="form-section">
+      <h2>Добавить продукт</h2>
+      <form id="food-form" enctype="multipart/form-data">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Название *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="proteins">Белки (г/100г) *</label>
+            <input type="number" id="proteins" name="proteins" min="0" step="0.1" required>
+          </div>
+          <div class="form-group">
+            <label for="fats">Жиры (г/100г) *</label>
+            <input type="number" id="fats" name="fats" min="0" step="0.1" required>
+          </div>
+          <div class="form-group">
+            <label for="carbs">Углеводы (г/100г) *</label>
+            <input type="number" id="carbs" name="carbs" min="0" step="0.1" required>
+          </div>
+          <div class="form-group">
+            <label for="calories">Калории (ккал/100г) *</label>
+            <input type="number" id="calories" name="calories" min="0" step="0.1" required>
+          </div>
+          <div class="form-group">
+            <label for="image">Фото *</label>
+            <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png,.webp" required>
+          </div>
+        </div>
+        <div style="margin-top: 20px;">
+          <button type="submit" class="btn btn-primary">Добавить продукт</button>
+        </div>
+      </form>
+    </section>
+
+    <div class="cards-grid" id="foods-list">
+      <div class="loading">Загрузка...</div>
+    </div>
+  </main>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
