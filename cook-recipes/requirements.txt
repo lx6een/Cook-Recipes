@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+sqlalchemy
+alembic
+pymysql
+pydantic
+python-dotenv
+python-multipart
+pillow
+jinja2
