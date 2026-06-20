@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рацион — Cook Recipes</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">🍳 Cook <span>Recipes</span></a>
+      <ul class="nav-links">
+        <li><a href="/">Главная</a></li>
+        <li><a href="/foods">Продукты</a></li>
+        <li><a href="/recipes">Рецепты</a></li>
+        <li><a href="/mealplans" class="active">Рацион</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="page-header">
+      <h1>Рацион на день</h1>
+    </div>
+
+    <div id="alerts"></div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="manual">Вручную</button>
+      <button class="tab" data-tab="auto">Автоматически</button>
+    </div>
+
+    <div class="tab-content active" id="tab-manual">
+      <section class="form-section">
+        <h2>Составить рацион вручную</h2>
+        <form id="manual-plan-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="plan-name">Название *</label>
+              <input type="text" id="plan-name" required placeholder="Рацион на понедельник">
+            </div>
+            <div class="form-group">
+              <label for="plan-target">Целевые калории (ккал) *</label>
+              <input type="number" id="plan-target" min="1" required placeholder="2000">
+            </div>
+          </div>
+          <div class="form-group" style="margin-top: 16px;">
+            <label>Выберите блюда *</label>
+            <div id="recipe-checkboxes" class="loading">Загрузка рецептов...</div>
+          </div>
+          <div id="manual-preview" style="margin-top: 16px;"></div>
+          <button type="submit" class="btn btn-primary" style="margin-top: 16px;">Сохранить рацион</button>
+        </form>
+      </section>
+    </div>
+
+    <div class="tab-content" id="tab-auto">
+      <section class="form-section">
+        <h2>Автоматический рацион</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 16px;">
+          Укажите целевую калорийность — система подберёт блюда, максимально приближаясь к цели (не более +100 ккал).
+        </p>
+        <form id="auto-plan-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="auto-plan-name">Название *</label>
+              <input type="text" id="auto-plan-name" required placeholder="Авто-рацион 2000 ккал">
+            </div>
+            <div class="form-group">
+              <label for="auto-plan-target">Целевые калории (ккал) *</label>
+              <input type="number" id="auto-plan-target" min="1" required placeholder="2000">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-top: 16px;">Сгенерировать рацион</button>
+        </form>
+      </section>
+    </div>
+
+    <h2 style="margin: 32px 0 16px;">Сохранённые рационы</h2>
+    <div id="plans-list">
+      <div class="loading">Загрузка...</div>
+    </div>
+  </main>
+
+  <div id="recipe-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Загрузка...</h2>
+        <button class="modal-close" onclick="closeRecipeModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <div class="loading">Загрузка рецепта...</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

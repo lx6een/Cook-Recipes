@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рецепты — Cook Recipes</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">🍳 Cook <span>Recipes</span></a>
+      <ul class="nav-links">
+        <li><a href="/">Главная</a></li>
+        <li><a href="/foods">Продукты</a></li>
+        <li><a href="/recipes" class="active">Рецепты</a></li>
+        <li><a href="/mealplans">Рацион</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="page-header">
+      <h1>Рецепты</h1>
+    </div>
+
+    <div id="alerts"></div>
+
+    <section class="form-section">
+      <h2>Создать рецепт</h2>
+      <form id="recipe-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="recipe-name">Название *</label>
+            <input type="text" id="recipe-name" required>
+          </div>
+          <div class="form-group">
+            <label for="recipe-image">Фото блюда *</label>
+            <input type="file" id="recipe-image" accept=".jpg,.jpeg,.png,.webp" required>
+            <label for="recipe-image" class="file-input-label">📸 Загрузить</label>
+          </div>
+          <div class="form-group full-width">
+            <label for="recipe-instruction">Инструкция *</label>
+            <textarea id="recipe-instruction" required></textarea>
+          </div>
+        </div>
+
+        <h3 style="margin: 20px 0 12px; color: var(--text-secondary);">Ингредиенты</h3>
+        <div id="ingredients-container"></div>
+        <button type="button" class="btn btn-secondary btn-sm" id="add-ingredient" style="margin-top: 8px;">
+          + Добавить ингредиент
+        </button>
+
+        <div style="margin-top: 20px;">
+          <button type="submit" class="btn btn-primary">Создать рецепт</button>
+        </div>
+      </form>
+    </section>
+
+    <div class="filters">
+      <input type="text" id="filter-search" placeholder="Поиск по названию...">
+      <input type="date" id="filter-date-from" title="Дата от">
+      <input type="date" id="filter-date-to" title="Дата до">
+      <input type="number" id="filter-min-cal" placeholder="Мин. ккал/100г" min="0">
+      <input type="number" id="filter-max-cal" placeholder="Макс. ккал/100г" min="0">
+      <button class="btn btn-secondary btn-sm" id="apply-filters">Применить</button>
+      <button class="btn btn-secondary btn-sm" id="reset-filters">Сбросить</button>
+    </div>
+
+    <div class="cards-grid" id="recipes-list">
+      <div class="loading">Загрузка...</div>
+    </div>
+  </main>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
